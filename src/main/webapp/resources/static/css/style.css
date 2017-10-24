@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+
+#content {
+	min-height: 1024px;
+}
+
+.footer-text {
+	text-align: center;
+}
+
+#footer-section {
+	background-color: #c0c0c0;
+	height: 150px;
+	text-align: left;
+	padding: 20px 0px; 
+}

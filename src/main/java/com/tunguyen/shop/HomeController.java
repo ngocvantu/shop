@@ -32,7 +32,7 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("currentMenu", "vietanh" );
-		
+		 
 		return "home";
 	}
 	

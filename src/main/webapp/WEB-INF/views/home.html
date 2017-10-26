@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-US" xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="common/header :: header" ></head>
+	<head th:replace="common/header :: header" >
+		<title>Flat form with Bootstrap 3</title> 
+	</head>
 	<body>
 		<nav th:replace="common/header :: navigation" ></nav>
-	
+		<time></time>
 	
 		<div  class="container">  
 			<div id="content" class="content"> 
@@ -84,6 +86,8 @@
 				</article>
 				<div class="clearfix"></div>
 			</div>
+			
+			
 			<div th:replace="common/header :: footer" ></div>
 		</div>
 </body>

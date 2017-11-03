@@ -6,7 +6,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,10 +20,15 @@ public class IndexController {
 	
 	@GetMapping("/")
 	public String index(Model model){
+		////
 		model.addAttribute("currentMenu", "anhviet");
+		////
 		
+		String sql = "CREATE TABLE IF NOT EXISTS `hello` (`id` int(11) NOT NULL,`name` varchar(20) NOT NULL)";
+		 
 		Session session;
 		session = sessionFactory.getCurrentSession();
+		session.createSQLQuery(sql).executeUpdate();
 		
 		return "index";
 	}

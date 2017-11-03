@@ -1,4 +1,4 @@
-package com.tunguyen.shop;
+package com.tunguyen.shop.controller;
 
 import javax.transaction.Transactional;
 

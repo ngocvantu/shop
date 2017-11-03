@@ -3,9 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -40,4 +42,31 @@
 		<beans:property name="templateEngine" ref="templateEngine"></beans:property>
 	</beans:bean>
 	
+	<!-- Hibernate config -->
+	
+	<beans:bean id="dataSource" name="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver"></beans:property>
+		<beans:property name="url" value="jdbc:mysql://localhost:3306/shop?createDatabaseIfNotExist=true"></beans:property>
+		<beans:property name="username" value="root"></beans:property>
+		<beans:property name="password" value=""></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="sessionFactory"  name="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" >
+		<beans:property name="dataSource" ref="dataSource" ></beans:property>
+		<beans:property name="hibernateProperties">
+			<beans:props>
+				<beans:prop key="hibernate.hbm2ddl.auto">create-drop</beans:prop>
+				<beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</beans:prop>
+			</beans:props>
+		</beans:property>
+	</beans:bean>
+	
+	<beans:bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager" >
+		<beans:property name="sessionFactory" ref="sessionFactory" ></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="persistenceExceptionTranslationPostProcessor" 
+	class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" ></beans:bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
 </beans:beans>

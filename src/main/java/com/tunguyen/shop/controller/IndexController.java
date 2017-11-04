@@ -20,10 +20,6 @@ public class IndexController {
 	
 	@GetMapping("/")
 	public String index(Model model){
-		////
-		model.addAttribute("currentMenu", "anhviet");
-		////
-		
 		String sql = "CREATE TABLE IF NOT EXISTS `hello` (`id` int(11) NOT NULL,`name` varchar(20) NOT NULL)";
 		 
 		Session session;

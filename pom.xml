@@ -13,7 +13,7 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 		<hibernate-version>4.3.5.Final</hibernate-version>
-		<mysql.connector.version>5.1.31</mysql.connector.version>
+		<mysql.connector.version>5.1.32</mysql.connector.version>
         <joda-time.version>2.3</joda-time.version>
 	</properties>
 	<dependencies>
@@ -70,11 +70,11 @@
 		</dependency>
 		
 		<!-- MySQL -->
-<!--         <dependency> -->
-<!--             <groupId>mysql</groupId> -->
-<!--             <artifactId>mysql-connector-java</artifactId> -->
-<!--             <version>${mysql.connector.version}</version> -->
-<!--         </dependency> -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.connector.version}</version>
+        </dependency>
  
         <!-- Joda-Time -->
         <dependency>

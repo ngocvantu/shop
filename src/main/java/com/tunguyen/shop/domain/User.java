@@ -14,14 +14,14 @@ public class User {
 	@Column(name = "id")
 	private int id;
 
-	@Column(name = "first_name")
-	private String firstName;
-
-	@Column(name = "last_name")
-	private String lastName;
+	@Column(name = "username")
+	private String username; 
 	
-	@Column
-	private String field1;
+	@Column(name = "password")
+	private String password;
+	
+	@Column(name = "email")
+	private String email;
 
 	public int getId() {
 		return id;
@@ -31,28 +31,28 @@ public class User {
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public String getField1() {
-		return field1;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setField1(String field1) {
-		this.field1 = field1;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	

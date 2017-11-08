@@ -24,7 +24,7 @@ public class LoginController {
 	public String login(@ModelAttribute("user") User user, Model model) { 
 		
 		if (user.getUsername().equalsIgnoreCase("tunguyen") && user.getPassword().equalsIgnoreCase("1")) {
-			return "index";
+			return "redirect:/";
 		} else {
 //			throw new NullPointerException();
 			return "redirect:/login";

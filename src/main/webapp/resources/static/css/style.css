@@ -9,8 +9,58 @@
 }
 
 #footer-section {
-	background-color: #c0c0c0;
+	background-color: #0B3259 ;
 	height: 150px;
 	text-align: left;
 	padding: 20px 0px; 
+	color: white ;
+/* 	font-family: Times New Roman; */
+}
+
+.container {
+	width: 98% !important;
+} 
+
+.navbar-inverse {
+	background-color: #0B3259;
+	border-color: #0B3259; 
+}
+
+.navbar{
+	margin-bottom: 10px !important;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+	color: white;
+}
+
+.vocal { 
+	padding: 2px; 
+}
+
+p {
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.vocal:HOVER {
+	/* 	border: 1px solid red; */
+	/* 	margin: 1px; */
+/* 	-webkit-box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 1); */
+/* 	-moz-box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 1); */
+/* 	box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 1); */
+}
+
+.col-md-4, .col-lg-4 {
+/* 	height: 172px; */
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.col-md-4:HOVER, .col-lg-4:HOVER {
+	-webkit-box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 1);
+	-moz-box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 1);
+	box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 1);
 }

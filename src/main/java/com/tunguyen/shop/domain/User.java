@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Table(name = "user")
-@Entity
+@Entity(name = "user") // error : User is not map
 public class User {
 	@Id
 	@GeneratedValue

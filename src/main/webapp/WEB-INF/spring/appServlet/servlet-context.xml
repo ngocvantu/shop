@@ -20,6 +20,7 @@
 	
 	<beans:bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" >
 		<beans:property name="basename" value="messages"></beans:property>
+		<beans:property name="defaultEncoding" value="UTF-8" ></beans:property>
 	</beans:bean>
 	
 	<!-- View config -->

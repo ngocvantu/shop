@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="header" >
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -28,7 +28,7 @@
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
 		      <ul class="nav navbar-nav">
-		        <li id="anhviet"><a th:href="@{/}">Anh->Việt</a></li>
+		        <li id="anhviet"><a th:href="@{/}" th:text="#{menu.anhviet}" ></a></li>
 		        <li id="vietanh"><a th:href="@{/login}">Việt->Anh</a></li>
 		        <li><a href="#">Flash card</a></li>
 		        <li class="dropdown">
@@ -74,7 +74,8 @@
 					<div class="row">
 						<div class="col-lg-12 footer-text" >
 							@2017 - Tu Nguyen Blog. All Right Reserved. <br/>
-							Ngõ 196 Cầu Giấy, Quan Hoa, Quận Cầu Giấy, Hà Nội
+							Ngõ 196 Cầu Giấy, Quan Hoa, Quận Cầu Giấy, Hà Nội <br/>
+							Designed by TuNguyen
 						</div>
 					</div>
 				</div>

@@ -8,7 +8,8 @@
 		<link rel="stylesheet" th:href="@{/resources/static/css/flat-form.css}" />  
 		<link rel="stylesheet" th:href="@{/resources/static/css/page-style.css}" />
 		<link rel="stylesheet" th:href="@{/resources/static/css/style.css}" />
-		<link rel="stylesheet" th:href="@{/resources/static/css/font-awesome.min.css}" /> 
+		<link rel="stylesheet" th:href="@{/resources/static/css/font-awesome.min.css}" />
+		<link rel="stylesheet" th:href="@{/resources/static/css/languages.min.css}" />  
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /> 
 </head>
 <body>
@@ -22,15 +23,15 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" th:href="@{/}">Home</a>
+		      <a class="navbar-brand" th:href="@{/}" th:text="#{menu.home}" ></a>
 		    </div>
 		
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
 		      <ul class="nav navbar-nav">
 		        <li id="anhviet"><a th:href="@{/}" th:text="#{menu.anhviet}" ></a></li>
-		        <li id="vietanh"><a th:href="@{/login}">Việt->Anh</a></li>
-		        <li><a href="#">Flash card</a></li>
+		        <li id="vietanh"><a th:href="@{/login}" th:text="#{menu.vietanh}" ></a></li>
+		        <li><a href="#" th:text="#{menu.flashcard}"></a></li>
 		        <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 		          <ul class="dropdown-menu">
@@ -44,27 +45,29 @@
 		          </ul>
 		        </li>
 		      </ul>
-		      
-		      <ul class="nav navbar-nav navbar-right">
-				<form class="navbar-form navbar-left">
-		        <div class="form-group">
-		          <input type="text" class="form-control" placeholder="Tìm kiếm">
-		        </div>
-		        <button type="submit" class="btn btn-default">Tìm kiếm</button>
-				</form>
-		        <li><a th:href="@{/login}">Đăng nhập</a></li>
-		        <li class="dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-		          <ul class="dropdown-menu">
-		            <li><a href="#">Action</a></li>
-		            <li><a href="#">Another action</a></li>
-		            <li><a href="#">Something else here</a></li>
-		            <li role="separator" class="divider"></li>
-		            <li><a href="#">Separated link</a></li>
-		          </ul>
-		        </li>
-		      </ul>
-		    </div><!-- /.navbar-collapse -->
+
+				<ul class="nav navbar-nav navbar-right">
+					<li id="vi" ><a href="#" ><span class="lang-lg"  lang="vi"></span></a></li>
+					<li id="en" ><a href="#" ><span class="lang-lg"  lang="en"></span></a></li>
+					<form class="navbar-form navbar-left">
+						<div class="form-group">
+							<input type="text" class="form-control" th:placeholder="#{menu.search}">
+						</div>
+						<button type="submit" class="btn btn-default" th:text="#{menu.search}" >Tìm kiếm</button>
+					</form>
+					<li><a th:href="@{/login}" th:if="${session.user == null}" th:text="#{meu.login}" > </a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false" th:if="${session.user != null}" ><span th:text="${session.user.username}" ></span><span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a th:href="@{/logout}" th:text="#{menu.logout}"></a></li>
+						</ul></li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
 		</nav>
 		
@@ -84,6 +87,22 @@
 			<script th:src="@{/resources/static/js/bootstrap.min.js}"></script>
 			<script th:src="@{/resources/static/js/fancySelect.js}"></script>
 			<script th:inline="javascript" th:src="@{/resources/static/js/main.js}"></script>
+			
+			<script type="text/javascript">
+				$(document).ready(
+						function() {
+							$("#vi").click(
+									function() {  
+											window.location
+													.replace("?lang=vi","?lang=en"); 
+									});
+							$("#en").click(
+									function() {  
+											window.location
+													.replace("?lang=en","?lang=vi"); 
+									});
+						});
+			</script>
 		</div>
 </body>
 </html>

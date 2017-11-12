@@ -21,7 +21,7 @@ public class UserRepositoryImpl implements UserRepository {
 		Session session;
 		session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("from user where username = :name ");
-		query.setParameter("name", "tunguyen");
+		query.setParameter("name", username);
 		User list = (User) query.uniqueResult();
 		return list;
 	}

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:include="common/header :: header (pageTitle='index page') ">
+<head th:include="common/header :: header (pageTitle=#{title.home}) ">
 	<title>chao</title>
 </head>
 <body>
@@ -153,7 +153,7 @@
 
 
 
-
+<!-- <a th:href="@{/login}"  th:if="${session.user1 != null}" th:text="${session.user1.username}"></a> -->
 
 
 

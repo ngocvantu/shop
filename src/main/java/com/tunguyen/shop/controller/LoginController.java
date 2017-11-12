@@ -7,17 +7,20 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.context.support.ServletRequestHandledEvent;
 
 import com.tunguyen.shop.domain.User;
 import com.tunguyen.shop.service.UserService;
 
 @Controller
-public class LoginController {
+public class LoginController implements ApplicationListener<ApplicationEvent> {
 	
 	public static final String USER_ = "user";
 
@@ -47,5 +50,11 @@ public class LoginController {
 		}
 
 		return "redirect:/";
+	}
+
+	@Override
+	public void onApplicationEvent(ApplicationEvent event) {
+		ServletRequestHandledEvent evt = (ServletRequestHandledEvent) event;
+		logger.info(evt.getProcessingTimeMillis() + " milisec - login");
 	}
 }

@@ -39,6 +39,7 @@ public class IndexController implements ApplicationListener<ApplicationEvent> {
 	@Override
 	public void onApplicationEvent(ApplicationEvent event) {
 		ServletRequestHandledEvent evt = (ServletRequestHandledEvent) event;
+		System.out.println("chaonhe");
 		logger.info(evt.getProcessingTimeMillis() + " milisec - index");
 	}
 }

@@ -41,6 +41,7 @@ public class LoginController implements ApplicationListener<ApplicationEvent> {
 	@PostMapping("/login")
 	public String login(Locale locale, @ModelAttribute("user") User user, Model model, HttpSession session) {
 		logger.info("login controller");
+		System.out.println("usernmae" + user.getUsername());
 
 		User loginUser = userService.login(user);
 		if (loginUser != null) {
@@ -55,6 +56,8 @@ public class LoginController implements ApplicationListener<ApplicationEvent> {
 	@Override
 	public void onApplicationEvent(ApplicationEvent event) {
 		ServletRequestHandledEvent evt = (ServletRequestHandledEvent) event;
-		logger.info(evt.getProcessingTimeMillis() + " milisec - login");
+		if (evt.getRequestUrl().contains("login")) {
+			logger.info(evt.getProcessingTimeMillis() + " milisec - login");
+		}
 	}
 }

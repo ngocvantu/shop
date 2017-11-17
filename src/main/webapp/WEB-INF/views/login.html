@@ -23,18 +23,19 @@
 									<form role="form" method="post" th:action="@{/login}" th:object="${user}" >
 										<!-- Username or email -->
 										<div class="form-group">
-											<label for="username" class="control-label">Username or email</label>
+											<label for="username" class="control-label" th:text="#{login.username}" ></label>
+											<span class="text-danger" >Bạn chưa nhập username</span>
 											<div class="has-feedback">
-												<input type="text" class="form-control" th:field="${user.username}" id="username" name="username" placeholder="Usename" >
+												<input type="text" class="form-control" th:field="${user.username}" id="username" name="username" th:placeholder="#{login.u}" >
 												<span class="fa fa-user form-control-feedback" aria-hidden="true"></span>
 											</div>
 										</div>
 										
 										<!-- Password -->
 										<div class="form-group">
-											<label for="password" class="control-label">Password</label>
+											<label for="password" class="control-label" th:text="#{login.password}" >Password</label>
 											<div class="has-feedback">
-												<input type="password" class="form-control" th:field="${user.password}" id="password" name="password" placeholder="Password" >
+												<input type="password" class="form-control" th:field="${user.password}" id="password" name="password" th:placeholder="#{login.p}" >
 												<span class="fa fa-lock form-control-feedback" aria-hidden="true"></span>
 											</div>
 										</div>
@@ -47,15 +48,15 @@
 													<input type="checkbox" id="remember" name="remember" value="1">
 													<span class="button-checkbox"></span>
 												</label>
-												<label for="remember">Remember Me</label>
+												<label for="remember" th:text="#{login.rememberme}" ></label>
 											</div>
 										</div>
 										
 										<!-- Logun button -->
 										<div class="form-group">
-											<button type="submit" class="btn btn-primary">Login</button>
+											<button type="submit" class="btn btn-primary" th:text="#{login.login}" ></button>
 											
-											<a class="btn btn-link" href="https://0.s3.envato.com/files/114606978/forgot.html">Forgotten your password?</a>
+											<a class="btn btn-link" href="https://0.s3.envato.com/files/114606978/forgot.html" th:text="#{login.forgetpass}" ></a>
 										</div>
 									</form>
 								</div>
@@ -67,15 +68,15 @@
 							<h2 class="text-center" th:text="#{login.social}" ></h2>
 							
 							<button type="button" class="btn btn-block btn-facebook btn-lg btn-left-icon">
-								<span class="fa fa-facebook" aria-hidden="true"></span> Login with Facebook
+								<span class="fa fa-facebook" aria-hidden="true"></span><span th:text="#{login.login-with-face}" ></span>
 							</button>
 							
 							<button type="button" class="btn btn-block btn-twitter btn-lg btn-left-icon">
-								<span class="fa fa-twitter" aria-hidden="true"></span> Login with Twitter
+								<span class="fa fa-twitter" aria-hidden="true"></span><span th:text="#{login.login-with-twit}" ></span>
 							</button>
 							
 							<button type="button" class="btn btn-block btn-google btn-lg btn-left-icon">
-								<span class="fa fa-google-plus" aria-hidden="true"></span> Login with Google Plus
+								<span class="fa fa-google-plus" aria-hidden="true"></span><span th:text="#{login.login-with-google}" ></span>
 							</button>
 						</div>
 						

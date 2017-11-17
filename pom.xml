@@ -50,6 +50,13 @@
 		    <version>3.0.0.RELEASE</version>
 		</dependency>
 		
+		<!-- hibernate-validator -->
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		    <version>4.2.0.Final-redhat-2</version>
+		</dependency>
+		
 		<!-- hibernate -->
 		<dependency>
 		    <groupId>org.hibernate</groupId>

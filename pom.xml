@@ -22,7 +22,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${org.springframework-version}</version>
-			<exclusions>
+			<exclusions> 
 				<!-- Exclude Commons Logging in favor of SLF4j -->
 				<exclusion>
 					<groupId>commons-logging</groupId>
@@ -50,12 +50,13 @@
 		    <version>3.0.0.RELEASE</version>
 		</dependency>
 		
-		<!-- hibernate-validator -->
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
 		<dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-validator</artifactId>
-		    <version>4.2.0.Final-redhat-2</version>
+		    <version>4.3.2.Final</version>
 		</dependency>
+
 		
 		<!-- hibernate -->
 		<dependency>

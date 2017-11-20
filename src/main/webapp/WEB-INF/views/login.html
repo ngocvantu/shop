@@ -20,11 +20,12 @@
 									<p> <span  th:text="#{login.noaccount}"  ></span> <a href="https://0.s3.envato.com/files/114606978/login.html" th:text="#{login.createaccount}" ></a>.</p>
 								</div>
 								<div class="panel-body">
-									<form role="form" method="post" th:action="@{/login}" th:object="${user}" >
+									<form role="form" method="post" th:action="@{/login}" th:object="${user}"  >
 										<!-- Username or email -->
 										<div class="form-group">
 											<label for="username" class="control-label" th:text="#{login.username}" ></label>
-											<span class="text-danger" >Bạn chưa nhập username</span>
+											<span style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+<!-- 											<span style="color: red" th:if="${#fields.hasErrors('username')}" th:text="${#fields.errors('username[1]')}"></span> -->
 											<div class="has-feedback">
 												<input type="text" class="form-control" th:field="${user.username}" id="username" name="username" th:placeholder="#{login.u}" >
 												<span class="fa fa-user form-control-feedback" aria-hidden="true"></span>
@@ -34,6 +35,7 @@
 										<!-- Password -->
 										<div class="form-group">
 											<label for="password" class="control-label" th:text="#{login.password}" >Password</label>
+											<span style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
 											<div class="has-feedback">
 												<input type="password" class="form-control" th:field="${user.password}" id="password" name="password" th:placeholder="#{login.p}" >
 												<span class="fa fa-lock form-control-feedback" aria-hidden="true"></span>

@@ -6,17 +6,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Table(name = "user")
-@Entity(name = "user") // error : User is not map
+@Entity(name = "user") // error : Table name and entity name must be the same
 public class User {
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
 	private int id;
 
+	@Length(min = 3)
+	@NotEmpty
 	@Column(name = "username")
 	private String username; 
 	
+	@NotEmpty
 	@Column(name = "password")
 	private String password;
 	

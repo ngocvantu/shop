@@ -11,6 +11,8 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.support.ServletRequestHandledEvent;
 
 @Controller
@@ -22,7 +24,7 @@ public class IndexController implements ApplicationListener<ApplicationEvent> {
 	@Autowired
 	SessionFactory sessionFactory;
 	
-	@GetMapping("/")
+	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String index(Locale locale, Model model) {
 		// String sql = "CREATE TABLE IF NOT EXISTS `hello` (`id` int(11) NOT
 		// NULL,`name` varchar(20) NOT NULL)";
@@ -30,8 +32,6 @@ public class IndexController implements ApplicationListener<ApplicationEvent> {
 		// Session session;
 		// session = sessionFactory.getCurrentSession();
 		// session.createSQLQuery(sql).executeUpdate();
-		
-		
 		
 		return "index";
 	}

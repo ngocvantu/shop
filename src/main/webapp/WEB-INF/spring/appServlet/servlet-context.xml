@@ -10,7 +10,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 		http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+        http://www.springframework.org/schema/mvc/springmvc.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -25,7 +25,7 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />  
 	
-	<context:component-scan base-package="com.tunguyen.shop" />
+	<context:component-scan base-package="com.tunguyen.shop,com.tunguyen.shop.controller" />
 	
 	<beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource" >
 		<beans:property name="basename" value="classpath:messages"></beans:property>
@@ -38,7 +38,7 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
     	<beans:property name="suffix" value=".html" />
     	<beans:property name="characterEncoding" value="UTF-8" />
-    	<beans:property name="templateMode" value="HTML5" />
+    	<beans:property name="templateMode" value="HTML" />
 	</beans:bean>
 	
 	<beans:bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine" >

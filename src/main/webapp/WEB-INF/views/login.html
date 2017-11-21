@@ -21,9 +21,9 @@
 								</div>
 								<div class="panel-body">
 									<form role="form" method="post" th:action="@{/login}" th:object="${user}"  >
-										<div th:if="${exception != null}" 
- 											th:utext="'Exception: ' + ${exception.message}" th:remove="tag">
-										</div>
+										<span style="color: red" th:if="${wrongcridentical}" 
+ 											th:text="#{wrongcridentical}">
+										</span>
 										<!-- Username or email -->
 										<div class="form-group">
 											<label for="username" class="control-label" th:text="#{login.username}" ></label>

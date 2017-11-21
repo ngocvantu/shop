@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.support.ServletRequestHandledEvent;
 
 import com.tunguyen.shop.domain.User;
+import com.tunguyen.shop.exception.AuthenticationException;
 import com.tunguyen.shop.service.UserService;
 
 @Controller
@@ -44,21 +45,18 @@ public class LoginController implements ApplicationListener<ApplicationEvent> {
 		
 	@PostMapping("/login")
 	public String login(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, Locale locale,
-			HttpSession session) {
+			HttpSession session) throws AuthenticationException {
 		logger.info("login controller");
-		// System.out.println("usernmae" + user.getUsername());
-
 		if (result.hasErrors()) {
 			return "login";
 		}
-
 		User loginUser = userService.login(user);
 		if (loginUser != null) {
 			session.setAttribute(USER_, loginUser);
 		} else {
+			model.addAttribute("wrongcridentical", true);
 			return "login";
 		}
-
 		return "redirect:/";
 	}
 

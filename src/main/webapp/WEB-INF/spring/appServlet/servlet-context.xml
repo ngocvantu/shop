@@ -21,6 +21,7 @@
 	<mvc:annotation-driven/>
 	
 	<beans:import resource="i18n.xml"/>
+	<beans:import resource="exception-config.xml"/>
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />  

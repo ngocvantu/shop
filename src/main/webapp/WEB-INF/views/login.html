@@ -16,16 +16,18 @@
 							<div class="panel panel-form">
 								<!-- Form header -->
 								<div class="panel-heading">
-									<h2 class="title" th:text="#{login.login}" >Login</h2>
-									<p> <span  th:text="#{login.noaccount}"  ></span> <a href="https://0.s3.envato.com/files/114606978/login.html" th:text="#{login.createaccount}" ></a>.</p>
+									<h2 class="title" th:text="#{login.login}" ></h2>
+									<p> <span  th:text="#{login.noaccount}"  ></span> <a href="https://0.s3.envato.com" th:text="#{login.createaccount}" ></a>.</p>
 								</div>
 								<div class="panel-body">
 									<form role="form" method="post" th:action="@{/login}" th:object="${user}"  >
+										<div th:if="${exception != null}" 
+ 											th:utext="'Exception: ' + ${exception.message}" th:remove="tag">
+										</div>
 										<!-- Username or email -->
 										<div class="form-group">
 											<label for="username" class="control-label" th:text="#{login.username}" ></label>
-											<span style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
-<!-- 											<span style="color: red" th:if="${#fields.hasErrors('username')}" th:text="${#fields.errors('username[1]')}"></span> -->
+											<span style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></span>
 											<div class="has-feedback">
 												<input type="text" class="form-control" th:field="${user.username}" id="username" name="username" th:placeholder="#{login.u}" >
 												<span class="fa fa-user form-control-feedback" aria-hidden="true"></span>
@@ -58,7 +60,7 @@
 										<div class="form-group">
 											<button type="submit" class="btn btn-primary" th:text="#{login.login}" ></button>
 											
-											<a class="btn btn-link" href="https://0.s3.envato.com/files/114606978/forgot.html" th:text="#{login.forgetpass}" ></a>
+											<a class="btn btn-link" href="https://0.s3.envato.com" th:text="#{login.forgetpass}" ></a>
 										</div>
 									</form>
 								</div>

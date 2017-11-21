@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -18,7 +19,7 @@ public class User {
 	private int id;
 
 	@Length(min = 3)
-	@NotEmpty
+	@Pattern(regexp = "^[a-zA-Z0-9_.-]+$", message="Chỉ được nhập số, chữ số và dấu gạch dưới")
 	@Column(name = "username")
 	private String username; 
 	

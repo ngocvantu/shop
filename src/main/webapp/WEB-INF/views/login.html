@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head th:include="common/header :: header (pageTitle=#{title.login}) ">
 	</head>
-	<body>
+	<body onload="googleLogin()" >
 		<nav th:replace="common/header :: navigation" ></nav>
 		<time></time>
 	
@@ -71,15 +71,11 @@
 						<div class="col-md-6">
 							<h2 class="text-center" th:text="#{login.social}" ></h2>
 							
-							<button type="button" class="btn btn-block btn-facebook btn-lg btn-left-icon">
+							<button type="button" class="btn btn-block btn-facebook btn-lg btn-left-icon" onclick="openfacedialog()">
 								<span class="fa fa-facebook" aria-hidden="true"></span><span th:text="#{login.login-with-face}" ></span>
 							</button>
 							
-							<button type="button" class="btn btn-block btn-twitter btn-lg btn-left-icon">
-								<span class="fa fa-twitter" aria-hidden="true"></span><span th:text="#{login.login-with-twit}" ></span>
-							</button>
-							
-							<button type="button" class="btn btn-block btn-google btn-lg btn-left-icon">
+							<button id="googleloginbutton"  type="button" class="btn btn-block btn-google btn-lg btn-left-icon"   >
 								<span class="fa fa-google-plus" aria-hidden="true"></span><span th:text="#{login.login-with-google}" ></span>
 							</button>
 						</div>
@@ -90,11 +86,73 @@
 					
 				</article>
 				<div class="clearfix"></div>
-			</div>
-			
-			
+			</div> 
 			
 		</div>
 		<div th:replace="common/header :: footer" ></div>
+		
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+<!-- 	face book -->
+	<script>
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id))
+				return;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=1857101377934421';
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
+
+	<script type="text/javascript">
+		function openfacedialog() {
+			
+			FB.login(function(response) {
+
+				FB.api('/me?fields=email,name,picture&type=large', function(userInfo) {
+					console.log('email: ' + userInfo.email);
+					console.log('name: ' + userInfo.name);
+					console.log('profile_pic: ' + userInfo.picture.data.url);
+				});
+			}, {
+				scope : 'public_profile,email'
+			});
+		}
+	</script>
+	
+<!-- 	end face book -->
+
+	<script type="text/javascript">
+		var googleUser = {};
+		
+	
+		function googleLogin(){
+			gapi.load('auth2', function(){
+			      // Retrieve the singleton for the GoogleAuth library and set up the client.
+			      auth2 = gapi.auth2.init({
+			        client_id: '45263658763-9ibfn75ie12u9l13oo1use8vrenh1m03.apps.googleusercontent.com',
+			        cookiepolicy: 'single_host_origin',
+			        // Request scopes in addition to 'profile' and 'email'
+			        //scope: 'additional_scope'
+			      });
+			      attachSignin(document.getElementById('googleloginbutton'));
+			    });
+		}
+		
+		function attachSignin(element) {
+		    auth2.attachClickHandler(element, {},
+		        function(googleUser) {
+		    	var profile = googleUser.getBasicProfile();
+		    		console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+		    	  	console.log('Name: ' + profile.getName());
+		    	  	console.log('Image URL: ' + profile.getImageUrl());
+		    	  	console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+		        }, function(error) {
+		          console.log(JSON.stringify(error, undefined, 2));
+		        });
+		  }
+	</script>
 </body>
 </html>

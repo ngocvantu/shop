@@ -10,7 +10,8 @@
 		<link rel="stylesheet" th:href="@{/resources/static/css/style.css}" />
 		<link rel="stylesheet" th:href="@{/resources/static/css/font-awesome.min.css}" />
 		<link rel="stylesheet" th:href="@{/resources/static/css/languages.min.css}" />  
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /> 
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<meta name="google-signin-client_id" content="45263658763-9ibfn75ie12u9l13oo1use8vrenh1m03.apps.googleusercontent.com"> 
 </head>
 <body>
 		<nav th:fragment="navigation" class="navbar navbar-inverse ">
@@ -71,6 +72,8 @@
 		  </div><!-- /.container-fluid -->
 		</nav>
 		
+		
+		
 		<div th:fragment="footer" >
 			<footer id="footer-section" > 
 				<div class="container">
@@ -103,6 +106,8 @@
 									});
 						});
 			</script>
+			
+			
 		</div>
 </body>
 </html>

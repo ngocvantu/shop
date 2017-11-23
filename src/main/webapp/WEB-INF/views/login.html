@@ -94,30 +94,53 @@
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
 <!-- 	face book -->
 	<script>
-		(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id))
-				return;
-			js = d.createElement(s);
-			js.id = id;
-			js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=1857101377934421';
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
+// 		(function(d, s, id) {
+// 			var js, fjs = d.getElementsByTagName(s)[0];
+// 			if (d.getElementById(id))
+// 				return;
+// 			js = d.createElement(s);
+// 			js.id = id;
+// 			js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=1857101377934421';
+// 			fjs.parentNode.insertBefore(js, fjs);
+// 		}(document, 'script', 'facebook-jssdk'));
 	</script>
 
 
 	<script type="text/javascript">
 		function openfacedialog() {
+			sendAjax();
 			
-			FB.login(function(response) {
-
-				FB.api('/me?fields=email,name,picture&type=large', function(userInfo) {
-					console.log('email: ' + userInfo.email);
-					console.log('name: ' + userInfo.name);
-					console.log('profile_pic: ' + userInfo.picture.data.url);
-				});
-			}, {
-				scope : 'public_profile,email'
+// 			FB.login(function(response) {
+// 				FB.api('/me?fields=email,name,picture&type=large', function(userInfo) {
+// 					console.log('email: ' + userInfo.email);
+// 					console.log('name: ' + userInfo.name);
+// 					console.log('profile_pic: ' + userInfo.picture.data.url);
+// 				});
+// 			}, {
+// 				scope : 'public_profile,email'
+// 			});
+		}
+		
+		function sendAjax(){
+			var data2 = {"email":"tunguyen4078@gmail.com"};
+			$.ajax({
+				type : "POST",
+				contentType : "application/json",
+				url : "http://localhost:8080/shop/sociallogin",
+				data : JSON.stringify(data2),
+				dataType : 'json',
+				timeout : 100000,
+				success : function(data1) {
+// 					alert(data1);
+					console.log("SUCCESS: ", data1);
+// 					window.location.href = "http://localhost:8080/shop"
+				},
+				error : function(e) {
+					console.log("ERROR: ", e);
+				},
+				done : function(e) {
+					console.log("DONE");
+				}
 			});
 		}
 	</script>

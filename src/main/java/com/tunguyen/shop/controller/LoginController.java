@@ -37,6 +37,7 @@ public class LoginController implements ApplicationListener<ApplicationEvent> {
 	@GetMapping("/login")
 	public String login(Locale locale, Model model, HttpSession session) {
 		if (session.getAttribute(USER_) != null) {
+			System.out.println("session not null");
 			return "redirect:/";
 		}
 		model.addAttribute("user", new User());
@@ -67,4 +68,5 @@ public class LoginController implements ApplicationListener<ApplicationEvent> {
 			logger.info(evt.getProcessingTimeMillis() + " milisec - login");
 		}
 	}
+	
 }

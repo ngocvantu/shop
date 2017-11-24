@@ -92,37 +92,38 @@
 		<div th:replace="common/header :: footer" ></div>
 		
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	
 <!-- 	face book -->
 	<script>
-// 		(function(d, s, id) {
-// 			var js, fjs = d.getElementsByTagName(s)[0];
-// 			if (d.getElementById(id))
-// 				return;
-// 			js = d.createElement(s);
-// 			js.id = id;
-// 			js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=1857101377934421';
-// 			fjs.parentNode.insertBefore(js, fjs);
-// 		}(document, 'script', 'facebook-jssdk'));
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id))
+				return;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=1857101377934421';
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
 	</script>
 
 
 	<script type="text/javascript">
 		function openfacedialog() {
-			sendAjax();
 			
-// 			FB.login(function(response) {
-// 				FB.api('/me?fields=email,name,picture&type=large', function(userInfo) {
-// 					console.log('email: ' + userInfo.email);
-// 					console.log('name: ' + userInfo.name);
-// 					console.log('profile_pic: ' + userInfo.picture.data.url);
-// 				});
-// 			}, {
-// 				scope : 'public_profile,email'
-// 			});
+			FB.login(function(response) {
+				FB.api('/me?fields=email,name,picture&type=large', function(userInfo) {
+					console.log('email: ' + userInfo.email);
+					console.log('name: ' + userInfo.name);
+					console.log('profile_pic: ' + userInfo.picture.data.url);
+					sendAjax(userInfo.email, userInfo.name);
+				});
+			}, {
+				scope : 'public_profile,email',auth_type: 'reauthenticate' 
+			});
 		}
 		
-		function sendAjax(){
-			var data2 = {"email":"tunguyen4078@gmail.com"};
+		function sendAjax(email, name){
+			var data2 = {"email":email, "name":name};
 			$.ajax({
 				type : "POST",
 				contentType : "application/json",
@@ -133,7 +134,7 @@
 				success : function(data1) {
 // 					alert(data1);
 					console.log("SUCCESS: ", data1);
-// 					window.location.href = "http://localhost:8080/shop"
+					window.location.href = "http://localhost:8080/shop"
 				},
 				error : function(e) {
 					console.log("ERROR: ", e);
@@ -172,6 +173,7 @@
 		    	  	console.log('Name: ' + profile.getName());
 		    	  	console.log('Image URL: ' + profile.getImageUrl());
 		    	  	console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+		    	  	sendAjax(profile.getEmail(), profile.getName());
 		        }, function(error) {
 		          console.log(JSON.stringify(error, undefined, 2));
 		        });

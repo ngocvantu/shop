@@ -13,6 +13,6 @@ public class LogoutController {
 	@GetMapping("/logout")
 	public String handleLogout(Locale locale, HttpSession sesion) {
 		sesion.removeAttribute(LoginController.USER_);
-		return "index";
+		return "redirect:/";
 	}
 }

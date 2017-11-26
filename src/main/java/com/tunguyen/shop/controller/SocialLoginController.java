@@ -1,5 +1,7 @@
 package com.tunguyen.shop.controller;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
@@ -12,7 +14,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.restfb.DefaultFacebookClient;
+import com.restfb.FacebookClient;
+import com.restfb.Version;
+import com.restfb.scope.FacebookPermissions;
+import com.restfb.scope.ScopeBuilder;
 import com.tunguyen.shop.domain.User;
+import com.tunguyen.shop.service.UserService;
 
 @Controller
 public class SocialLoginController {
@@ -20,24 +32,70 @@ public class SocialLoginController {
 	@Autowired
 	LoginController lgolinController;
 	
+	@Autowired
+	UserService userService;
+
 	@RequestMapping(value = "/sociallogin", method = RequestMethod.POST)
 	public @ResponseBody String login(@RequestBody String email, HttpSession session, Locale locale){
-		JSONObject jsonObject = new JSONObject(email);
-		String useremail = jsonObject.getString("email");
-		String username = jsonObject.getString("name");
-		System.out.println(useremail);
 		
-		User user = new User();
-		user.setEmail(useremail);
-		user.setUsername(username);
-		user.setId(12);
-		user.setPassword("asdf");
+		ScopeBuilder scopeBuilder = new ScopeBuilder();
+		scopeBuilder.addPermission(FacebookPermissions.PUBLIC_PROFILE);
+		scopeBuilder.addPermission(FacebookPermissions.EMAIL);
+		scopeBuilder.addPermission(FacebookPermissions.USER_BIRTHDAY);
 		
-		session.setAttribute(LoginController.USER_, user);
-		User u = (User) session.getAttribute(LoginController.USER_);
-		System.out.println("user sesssion " + u.getUsername());
+		FacebookClient client = new DefaultFacebookClient(Version.LATEST);
+		String loginDialogUrlString = client.getLoginDialogUrl("1857101377934421", "http://localhost:8080/shop/login",
+				scopeBuilder);
+		System.out.println(loginDialogUrlString);
+
+		return "{\"chao\":\"" + loginDialogUrlString + "\"}";
+	}
+
+	@RequestMapping(value = "/googlelogin")
+	public @ResponseBody String googleLogin(@RequestBody String client_id_token, HttpSession session) {
 		
-		return "{\"chao\":\"none\"}";
+		JSONObject idTokenObj = new JSONObject(client_id_token);
+		String id_token = idTokenObj.getString("id_token");
+		String GOOGLE_CLIENT_ID = "45263658763-9ibfn75ie12u9l13oo1use8vrenh1m03.apps.googleusercontent.com";
+		try {
+
+			System.out.println("id_token " + id_token);
+			JacksonFactory jacksonFactory = new JacksonFactory();
+			GoogleIdTokenVerifier googleIdTokenVerifier = new GoogleIdTokenVerifier(new NetHttpTransport(),
+					jacksonFactory);
+			GoogleIdToken token = GoogleIdToken.parse(jacksonFactory, id_token);
+
+			if (googleIdTokenVerifier.verify(token)) {
+				GoogleIdToken.Payload payload = token.getPayload();
+				if (!GOOGLE_CLIENT_ID.equals(payload.getAudience())) {
+					throw new IllegalArgumentException("Audience mismatch");
+				} else if (!GOOGLE_CLIENT_ID.equals(payload.getAuthorizedParty())) {
+					throw new IllegalArgumentException("Client ID mismatch");
+				}
+				
+				User user = new User();
+				user.setEmail(payload.getEmail());
+				user.setUsername((String) payload.get("name"));
+				user.setPassword("##########");
+				user.setImage((String) payload.get("picture"));
+				System.out.println("google image: " + (String) payload.get("picture"));
+
+				User logedinuser = userService.loginGo(user);
+				if (logedinuser == null) {
+					return "redirect:/login";
+				}
+				session.setAttribute(LoginController.USER_, logedinuser);
+				return "{\"chao\":\"/shop\"}";
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (GeneralSecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return "/shop/login";
 	}
 
 }

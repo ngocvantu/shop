@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:include="common/header :: header (pageTitle=#{title.newword}) ">
+	</head>
+	<body >
+		<nav th:replace="common/header :: navigation" ></nav>
+		<time></time>
+<!-- ********************************************************* -->
+		<div  class="container">  
+			<div id="content" class="content"> 
+				<article class="col-sm-6 col-md-8 col-sm-offset-3 col-md-offset-2">
+					<!-- START Login form -->
+					<div class="row">
+						<!-- Login form -->
+						<div class="col-md-6">
+							<div class="panel panel-form">
+								<!-- Form header -->
+								<div class="panel-heading">
+									<h2 class="title" th:text="#{newword.addword}" ></h2>
+								</div>
+								<div class="panel-body">
+									<form role="form" method="post" th:action="@{/newword}" th:object="${vocab}"  >
+										<span style="color: red" th:if="${wrongcridentical}" 
+ 											th:text="#{wrongcridentical}">
+										</span>
+										<!-- tuvung -->
+										<div class="form-group">
+											<label for="tuvung" class="control-label" th:text="#{newword.tuvung}" ></label>
+											<span style="color: red" th:if="${#fields.hasErrors('tuvung')}" th:errors="*{tuvung}"  ></span>
+											<div class="has-feedback">
+												<input autofocus type="text" class="form-control" th:field="${vocab.tuvung}" id="tuvung" name="tuvung" th:placeholder="#{login.u}" >
+												<span class="fa fa-user form-control-feedback" aria-hidden="true"></span>
+											</div>
+										</div>
+										
+										<!-- nghia -->
+										<div class="form-group">
+											<label for="password" class="control-label" th:text="#{login.password}" >Password</label>
+											<span style="color: red" th:if="${#fields.hasErrors('nghia')}" th:errors="*{nghia}"></span>
+											<div class="has-feedback">
+												<input type="text" class="form-control" th:field="${vocab.nghia}" id="nghia" name="nghia" th:placeholder="#{login.p}" >
+												<span class="fa fa-lock form-control-feedback" aria-hidden="true"></span>
+											</div>
+										</div>
+										
+										<!-- vi du 1 -->
+										<div class="form-group">
+											<label for="vidu1" class="control-label" th:text="#{login.password}" >Password</label>
+											<span style="color: red" th:if="${#fields.hasErrors('vidu1')}" th:errors="*{vidu1}"></span>
+											<div class="has-feedback">
+												<input type="text" class="form-control" th:field="${vocab.vidu1}" id="vidu1" name="vidu1" th:placeholder="#{login.p}" >
+												<span class="fa fa-lock form-control-feedback" aria-hidden="true"></span>
+											</div>
+										</div>
+										
+										<!-- Logun button -->
+										<div class="form-group">
+											<button type="submit" class="btn btn-primary" th:text="#{login.login}" ></button>
+											
+											<a class="btn btn-link" href="https://0.s3.envato.com" th:text="#{login.forgetpass}" ></a>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					
+					<!-- END Login form -->
+					
+				</article>
+				<div class="clearfix"></div>
+			</div> 
+			
+		</div>
+
+
+
+<!-- ********************************************************** -->
+		<div th:replace="common/header :: footer" ></div>
+	</body>
+</html>

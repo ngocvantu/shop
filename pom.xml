@@ -85,6 +85,19 @@
 		    <version>2.0.1.RELEASE</version>
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/com.restfb/restfb -->
+		<dependency>
+		    <groupId>com.restfb</groupId>
+		    <artifactId>restfb</artifactId>
+		    <version>2.0.0-rc.3</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.google.api-client/google-api-client -->
+		<dependency>
+		    <groupId>com.google.api-client</groupId>
+		    <artifactId>google-api-client</artifactId>
+		    <version>1.22.0</version>
+		</dependency>
 		
 		<dependency>
 		   <groupId>org.javassist</groupId>

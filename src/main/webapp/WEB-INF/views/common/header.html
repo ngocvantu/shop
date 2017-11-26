@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ 
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="header" >
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -11,7 +11,6 @@
 		<link rel="stylesheet" th:href="@{/resources/static/css/font-awesome.min.css}" />
 		<link rel="stylesheet" th:href="@{/resources/static/css/languages.min.css}" />  
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-		<meta name="google-signin-client_id" content="45263658763-9ibfn75ie12u9l13oo1use8vrenh1m03.apps.googleusercontent.com"> 
 </head>
 <body>
 		<nav th:fragment="navigation" class="navbar navbar-inverse ">
@@ -33,6 +32,7 @@
 		        <li id="anhviet"><a th:href="@{/}" th:text="#{menu.anhviet}" ></a></li>
 		        <li id="vietanh"><a th:href="@{/login}" th:text="#{menu.vietanh}" ></a></li>
 		        <li><a href="#" th:text="#{menu.flashcard}"></a></li>
+		        <li><a th:href="@{/newword}" th:text="#{menu.newword}"></a></li>
 		        <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 		          <ul class="dropdown-menu">
@@ -56,10 +56,15 @@
 						</div>
 						<button type="submit" class="btn btn-default" th:text="#{menu.search}" >Tìm kiếm</button>
 					</form>
-					<li><a th:href="@{/login}" th:if="${session.user == null}" th:text="#{meu.login}" > </a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false" th:if="${session.user != null}" ><span th:text="${session.user.username}" ></span><span class="caret"></span></a>
+					<li><a th:href="@{/login}" th:if="${session.user == null}" th:text="#{menu.login}" > </a></li>
+					<li><img th:if="${session.user != null}" th:src="${session.user.image}" style="margin-top: 8px" height="34" width="34" class="img-rounded" /></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								aria-expanded="false" th:if="${session.user != null}" >
+							<span th:text="${session.user.username}" > </span>
+							<span class="caret"></span>
+						</a>
+						
 						<ul class="dropdown-menu">
 							<li><a href="#">Action</a></li>
 							<li><a href="#">Another action</a></li>

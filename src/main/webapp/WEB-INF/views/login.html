@@ -6,6 +6,8 @@
 		<nav th:replace="common/header :: navigation" ></nav>
 		<time></time>
 	
+		<span style="color: red" th:if="${exception}" 
+ 											th:text="${exception.message}"></span>
 		<div  class="container">  
 			<div id="content" class="content"> 
 				<article class="col-sm-6 col-md-8 col-sm-offset-3 col-md-offset-2">

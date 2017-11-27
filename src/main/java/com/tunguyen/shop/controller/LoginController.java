@@ -60,7 +60,7 @@ public class LoginController implements ApplicationListener<ApplicationEvent> {
 				System.out.println("user info: " + userInfo.toString());
 
 				User u = new User();
-				u.setPassword("asdf!########");
+				u.setPassword("###!!asdff123AAA#######");
 				try {
 					String birthday = userInfo.getString("birthday");
 					System.out.println("birthday: " + birthday);

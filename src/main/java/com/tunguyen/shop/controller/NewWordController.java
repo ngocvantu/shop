@@ -9,7 +9,7 @@ import com.tunguyen.shop.domain.Vocabulary;
 @Controller
 public class NewWordController {
 
-	@GetMapping
+	@GetMapping("/newword")
 	public String newWord(Model model) {
 		Vocabulary vocab = new Vocabulary();
 		model.addAttribute("vocab", vocab);

@@ -76,7 +76,7 @@ public class SocialLoginController {
 				User user = new User();
 				user.setEmail(payload.getEmail());
 				user.setUsername((String) payload.get("name"));
-				user.setPassword("##########");
+				user.setPassword("###!!asdff123AAA#######");
 				user.setImage((String) payload.get("picture"));
 				System.out.println("google image: " + (String) payload.get("picture"));
 

@@ -61,8 +61,9 @@
 										
 										<!-- tu loai -->
 										<div class="form-group">
-										  <label for="vidu2" class="control-label" th:text="#{newword.tuloai}" ></label>
-										  <select class="form-control" id="vidu2">
+										  <label for="tuloai" class="control-label" th:text="#{newword.tuloai}" ></label>
+										  <span style="color: red" th:if="${#fields.hasErrors('tuloai')}" th:errors="*{tuloai}"  ></span>
+										  <select class="form-control" th:field="${vocab.tuloai}" id="tuloai" name="tuloai">
 										    <option value="danhtu" th:text="#{newword.tuloai.danhtu}" ></option>
 										    <option value="dongtu" th:text="#{newword.tuloai.dongtu}" ></option>
 										    <option value="tinhtu" th:text="#{newword.tuloai.tinhtu}" ></option>
@@ -70,7 +71,33 @@
 										    <option value="khac" th:text="#{newword.tuloai.khac}" ></option>
 										  </select>
 										</div>
+										
+										<!-- tu dong nghia -->
+										<div class="form-group">
+											<label for="tudongnghia" class="control-label" th:text="#{newword.tudongnghia}" ></label>
+											<span style="color: red" th:if="${#fields.hasErrors('tudongnghia')}" th:errors="*{tudongnghia}"  ></span>
+											<div class="has-feedback">
+												<input autofocus type="text" class="form-control" th:field="${vocab.tudongnghia}" id="tudongnghia" name="tudongnghia" th:placeholder="#{newword.tudongnghia}" >
+											</div>
+										</div>
+										
+										<!-- tutrainghia -->
+										<div class="form-group">
+											<label for="tutrainghia" class="control-label" th:text="#{newword.tutrainghia}" ></label>
+											<span style="color: red" th:if="${#fields.hasErrors('tutrainghia')}" th:errors="*{tutrainghia}"  ></span>
+											<div class="has-feedback">
+												<input autofocus type="text" class="form-control" th:field="${vocab.tutrainghia}" id="tutrainghia" name="tutrainghia" th:placeholder="#{newword.tutrainghia}" >
+											</div>
+										</div>
 									  
+									  	<!-- ghichu -->
+										<div class="form-group">
+											<label for="ghichu" class="control-label" th:text="#{newword.ghichu}" ></label>
+											<span style="color: red" th:if="${#fields.hasErrors('ghichu')}" th:errors="*{ghichu}"  ></span>
+											<div class="has-feedback">
+												<input autofocus type="text" class="form-control" th:field="${vocab.ghichu}" id="ghichu" name="ghichu" th:placeholder="#{newword.ghichu}" >
+											</div>
+										</div>
 										
 										<!-- Logun button -->
 										<div class="form-group">

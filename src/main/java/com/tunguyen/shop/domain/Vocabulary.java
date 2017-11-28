@@ -20,8 +20,8 @@ public class Vocabulary {
 	@Column(name = "id")
 	private int id;
 
-	@Column(name = "tuvung")
 	@NotEmpty
+	@Column(name = "tuvung")
 	private String tuvung;
 
 	@Column(name = "nghia")

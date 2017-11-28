@@ -28,36 +28,53 @@
 											<label for="tuvung" class="control-label" th:text="#{newword.tuvung}" ></label>
 											<span style="color: red" th:if="${#fields.hasErrors('tuvung')}" th:errors="*{tuvung}"  ></span>
 											<div class="has-feedback">
-												<input autofocus type="text" class="form-control" th:field="${vocab.tuvung}" id="tuvung" name="tuvung" th:placeholder="#{login.u}" >
-												<span class="fa fa-user form-control-feedback" aria-hidden="true"></span>
+												<input autofocus type="text" class="form-control" th:field="${vocab.tuvung}" id="tuvung" name="tuvung" th:placeholder="#{newword.vocab}" >
 											</div>
 										</div>
 										
 										<!-- nghia -->
 										<div class="form-group">
-											<label for="password" class="control-label" th:text="#{login.password}" >Password</label>
-											<span style="color: red" th:if="${#fields.hasErrors('nghia')}" th:errors="*{nghia}"></span>
+											<label for="nghia" class="control-label" th:text="#{newword.nghia}" ></label>
+											<span style="color: red" th:if="${#fields.hasErrors('nghia')}" th:errors="*{nghia}"  ></span>
 											<div class="has-feedback">
-												<input type="text" class="form-control" th:field="${vocab.nghia}" id="nghia" name="nghia" th:placeholder="#{login.p}" >
-												<span class="fa fa-lock form-control-feedback" aria-hidden="true"></span>
+												<input autofocus type="text" class="form-control" th:field="${vocab.nghia}" id="nghia" name="nghia" th:placeholder="#{newword.nghia}" >
 											</div>
 										</div>
 										
 										<!-- vi du 1 -->
 										<div class="form-group">
-											<label for="vidu1" class="control-label" th:text="#{login.password}" >Password</label>
-											<span style="color: red" th:if="${#fields.hasErrors('vidu1')}" th:errors="*{vidu1}"></span>
+											<label for="vidu1" class="control-label" th:text="#{newword.vidu1}" ></label>
+											<span style="color: red" th:if="${#fields.hasErrors('vidu1')}" th:errors="*{vidu1}"  ></span>
 											<div class="has-feedback">
-												<input type="text" class="form-control" th:field="${vocab.vidu1}" id="vidu1" name="vidu1" th:placeholder="#{login.p}" >
-												<span class="fa fa-lock form-control-feedback" aria-hidden="true"></span>
+												<input autofocus type="text" class="form-control" th:field="${vocab.vidu1}" id="vidu1" name="vidu1" th:placeholder="#{newword.vidu1}" >
 											</div>
 										</div>
+										
+										<!-- vi du 2 -->
+										<div class="form-group">
+											<label for="vidu2" class="control-label" th:text="#{newword.vidu2}" ></label>
+											<span style="color: red" th:if="${#fields.hasErrors('vidu2')}" th:errors="*{vidu2}"  ></span>
+											<div class="has-feedback">
+												<input autofocus type="text" class="form-control" th:field="${vocab.vidu2}" id="vidu2" name="vidu2" th:placeholder="#{newword.vidu2}" >
+											</div>
+										</div>
+										
+										<!-- tu loai -->
+										<div class="form-group">
+										  <label for="vidu2" class="control-label" th:text="#{newword.tuloai}" ></label>
+										  <select class="form-control" id="vidu2">
+										    <option value="danhtu" th:text="#{newword.tuloai.danhtu}" ></option>
+										    <option value="dongtu" th:text="#{newword.tuloai.dongtu}" ></option>
+										    <option value="tinhtu" th:text="#{newword.tuloai.tinhtu}" ></option>
+										    <option value="trangtu" th:text="#{newword.tuloai.trangtu}" ></option>
+										    <option value="khac" th:text="#{newword.tuloai.khac}" ></option>
+										  </select>
+										</div>
+									  
 										
 										<!-- Logun button -->
 										<div class="form-group">
 											<button type="submit" class="btn btn-primary" th:text="#{login.login}" ></button>
-											
-											<a class="btn btn-link" href="https://0.s3.envato.com" th:text="#{login.forgetpass}" ></a>
 										</div>
 									</form>
 								</div>
@@ -78,5 +95,6 @@
 
 <!-- ********************************************************** -->
 		<div th:replace="common/header :: footer" ></div>
+		
 	</body>
 </html>

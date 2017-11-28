@@ -247,7 +247,7 @@ select.form-control.multiple option {
 		.fancy-select .form-control:after {
 			position: absolute;
 			display: block;
-			content: "ﾃｯ�ｿｽﾂｸ";
+			content: "";
 			top: 50%;
 			right: 0;
 			margin: -6px 8px 0 0;

@@ -64,6 +64,7 @@
         }
       });
       trigger.on('close.fs', function() {
+    	 
         trigger.removeClass('open');
         return options.removeClass('open');
       });
@@ -154,6 +155,7 @@
         }
       });
       options.on('mousedown.fs', 'li', function(e) {
+    	  
         var clicked;
         clicked = $(this);
         sel.val(clicked.data('raw-value'));
@@ -197,10 +199,14 @@
       };
       sel.on('update.fs', function() {
         wrapper.find('.options').empty();
+        
         return copyOptionsToList();
       });
+      
       return copyOptionsToList();
     });
+    
+    
   };
 
 }).call(this);

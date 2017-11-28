@@ -57,6 +57,9 @@ public class Vocabulary {
 	@Column(name = "solanon")
 	private int solanon = 0;
 
+	@Column(name = "userid")
+	private int userid;
+
 	public int getId() {
 		return id;
 	}
@@ -160,5 +163,16 @@ public class Vocabulary {
 	public void setSolanon(int solanon) {
 		this.solanon = solanon;
 	}
+
+	public int getUserid() {
+		return userid;
+	}
+
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+	
+	
+	
 
 }

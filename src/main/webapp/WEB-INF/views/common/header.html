@@ -32,7 +32,7 @@
 		        <li id="anhviet"><a th:href="@{/}" th:text="#{menu.anhviet}" ></a></li>
 		        <li id="vietanh"><a th:href="@{/login}" th:text="#{menu.vietanh}" ></a></li>
 		        <li><a href="#" th:text="#{menu.flashcard}"></a></li>
-		        <li><a th:href="@{/newword}" th:text="#{menu.newword}"></a></li>
+		        <li th:if="${session.user != null}"><a  th:href="@{/newword}" th:text="#{menu.newword}"></a></li>
 		        <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 		          <ul class="dropdown-menu">
@@ -94,6 +94,14 @@
 			<script th:src="@{/resources/static/js/jquery-2.1.1.min.js}"></script>
 			<script th:src="@{/resources/static/js/bootstrap.min.js}"></script>
 			<script th:src="@{/resources/static/js/fancySelect.js}"></script>
+			<script>
+			$(document).ready(function() {
+				 
+				$(".custom-select").fancySelect(); // Custom select
+				console.log("asdf");
+				$("[data-toggle='tooltip']").tooltip() // Tooltip
+			});
+			</script>
 			<script th:inline="javascript" th:src="@{/resources/static/js/main.js}"></script>
 			
 			<script type="text/javascript">

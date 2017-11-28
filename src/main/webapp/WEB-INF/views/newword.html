@@ -72,6 +72,15 @@
 										  </select>
 										</div>
 										
+										<!-- noihoc -->
+										<div class="form-group">
+											<label for="noihoc" class="control-label" th:text="#{newword.noihoc}" ></label>
+											<span style="color: red" th:if="${#fields.hasErrors('noihoc')}" th:errors="*{noihoc}"  ></span>
+											<div class="has-feedback">
+												<input autofocus type="text" class="form-control" th:field="${vocab.noihoc}" id="noihoc" name="noihoc" th:placeholder="#{newword.noihoc}" >
+											</div>
+										</div>
+										
 										<!-- tu dong nghia -->
 										<div class="form-group">
 											<label for="tudongnghia" class="control-label" th:text="#{newword.tudongnghia}" ></label>
@@ -99,9 +108,9 @@
 											</div>
 										</div>
 										
-										<!-- Logun button -->
+										<!-- submit button -->
 										<div class="form-group">
-											<button type="submit" class="btn btn-primary" th:text="#{login.login}" ></button>
+											<button type="submit" class="btn btn-primary" th:text="#{newword.nhap}" ></button>
 										</div>
 									</form>
 								</div>

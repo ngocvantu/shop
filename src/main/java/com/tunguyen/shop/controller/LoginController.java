@@ -18,8 +18,10 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,8 +36,11 @@ import com.tunguyen.shop.exception.AuthenticationException;
 import com.tunguyen.shop.service.UserService;
 
 @Controller
+@PropertySource("classpath:host.properties")
 public class LoginController implements ApplicationListener<ApplicationEvent> {
 	
+	@Value("${host}")
+	private String host;
 	public static final String USER_ = "user";
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
@@ -48,8 +53,8 @@ public class LoginController implements ApplicationListener<ApplicationEvent> {
 		System.out.println("code: " + code);
 		if (code != null) {
 			try {
-				String urlString = "https://graph.facebook.com/v2.11/oauth/access_token?client_id=1857101377934421&redirect_uri=http://localhost:8080/shop/login&client_secret=19a77c6a0965dc70225f06ec17010f07&code="
-						+ code;
+				String urlString = "https://graph.facebook.com/v2.11/oauth/access_token?client_id=1857101377934421&redirect_uri="
+						+ host + "/login&client_secret=19a77c6a0965dc70225f06ec17010f07&code=" + code;
 				JSONObject accessTokenObj = getFace(urlString);
 				String accessToken = accessTokenObj.getString("access_token");
 				System.out.println("access token: " + accessToken);

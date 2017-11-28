@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +29,12 @@ import com.tunguyen.shop.domain.User;
 import com.tunguyen.shop.service.UserService;
 
 @Controller
+@PropertySource("classpath:host.properties")
 public class SocialLoginController {
 	
+	@Value("${host}")
+	private String host;
+
 	@Autowired
 	LoginController lgolinController;
 	
@@ -44,7 +50,7 @@ public class SocialLoginController {
 		scopeBuilder.addPermission(FacebookPermissions.USER_BIRTHDAY);
 		
 		FacebookClient client = new DefaultFacebookClient(Version.LATEST);
-		String loginDialogUrlString = client.getLoginDialogUrl("1857101377934421", "http://localhost:8080/shop/login",
+		String loginDialogUrlString = client.getLoginDialogUrl("1857101377934421", host + "/login",
 				scopeBuilder);
 		System.out.println(loginDialogUrlString);
 

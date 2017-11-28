@@ -19,7 +19,7 @@
 									<h2 class="title" th:text="#{newword.addword}" ></h2>
 								</div>
 								<div class="panel-body">
-									<form role="form" method="post" th:action="@{/newword}" th:object="${vocab}"  >
+									<form role="form" method="post" th:action="@{/newword}" th:object="${vocab}" enctype="multipart/form-data" >
 										<span style="color: red" th:if="${wrongcridentical}" 
  											th:text="#{wrongcridentical}">
 										</span>
@@ -105,6 +105,15 @@
 											<span style="color: red" th:if="${#fields.hasErrors('ghichu')}" th:errors="*{ghichu}"  ></span>
 											<div class="has-feedback">
 												<input autofocus type="text" class="form-control" th:field="${vocab.ghichu}" id="ghichu" name="ghichu" th:placeholder="#{newword.ghichu}" >
+											</div>
+										</div>
+										
+										<!-- image -->
+										<div class="form-group">
+											<label for="ghichu" class="control-label" th:text="#{newword.ghichu}" ></label>
+											<span style="color: red" th:if="${#fields.hasErrors('ghichu')}" th:errors="*{ghichu}"  ></span>
+											<div class="has-feedback">
+												<input type="file" class="form-control"   id="file" name="file" >
 											</div>
 										</div>
 										

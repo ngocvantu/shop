@@ -41,6 +41,20 @@
 											</div>
 										</div>
 										
+										<!-- hinh anh -->
+										<div class="form-group">
+											<span class="control-label" th:text="#{newword.image}" ></span>
+											<div class="form-control file-input">
+												<label for="file">
+													<span class="btn btn-primary">
+														<input type="file" name="file" id="file" onchange="this.parentNode.parentNode.nextElementSibling.value = this.value" />
+														<span th:text="#{newword.image.choosefile}" ></span>
+													</span>
+												</label>
+												<input class="file-name" type="text" readonly="readonly" th:placeholder="#{newword.image.nofileselected}" />
+											</div>
+										</div>
+										
 										<!-- vi du 1 -->
 										<div class="form-group">
 											<label for="vidu1" class="control-label" th:text="#{newword.vidu1}" ></label>
@@ -97,25 +111,7 @@
 											<div class="has-feedback">
 												<input autofocus type="text" class="form-control" th:field="${vocab.tutrainghia}" id="tutrainghia" name="tutrainghia" th:placeholder="#{newword.tutrainghia}" >
 											</div>
-										</div>
-									  
-									  	<!-- ghichu -->
-										<div class="form-group">
-											<label for="ghichu" class="control-label" th:text="#{newword.ghichu}" ></label>
-											<span style="color: red" th:if="${#fields.hasErrors('ghichu')}" th:errors="*{ghichu}"  ></span>
-											<div class="has-feedback">
-												<input autofocus type="text" class="form-control" th:field="${vocab.ghichu}" id="ghichu" name="ghichu" th:placeholder="#{newword.ghichu}" >
-											</div>
-										</div>
-										
-										<!-- image -->
-										<div class="form-group">
-											<label for="ghichu" class="control-label" th:text="#{newword.ghichu}" ></label>
-											<span style="color: red" th:if="${#fields.hasErrors('ghichu')}" th:errors="*{ghichu}"  ></span>
-											<div class="has-feedback">
-												<input type="file" class="form-control"   id="file" name="file" >
-											</div>
-										</div>
+										</div> 
 										
 										<!-- submit button -->
 										<div class="form-group">

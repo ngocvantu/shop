@@ -1,5 +1,8 @@
 package com.tunguyen.shop.repo;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,16 @@ public class VocabRepositoryImpl implements VocabRepository {
 		Session session;
 		session = sessionFactory.getCurrentSession();
 		session.save(vocab);
+	}
+
+	@Override
+	public List<Vocabulary> get20Vocab() { 
+		Session session;
+		session = sessionFactory.getCurrentSession();
+
+		Query query = session.createQuery("from vocabulary").setFirstResult(0).setMaxResults(20);
+
+		return query.list();
 	}
 
 }

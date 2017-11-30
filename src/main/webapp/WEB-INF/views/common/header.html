@@ -32,7 +32,7 @@
 		        <li id="anhviet"><a th:href="@{/}" th:text="#{menu.anhviet}" ></a></li>
 		        <li id="vietanh"><a th:href="@{/login}" th:text="#{menu.vietanh}" ></a></li>
 		        <li><a href="#" th:text="#{menu.flashcard}"></a></li>
-		        <li th:if="${session.user != null}"><a  th:href="@{/newword}" th:text="#{menu.newword}"></a></li>
+		        <li><a  th:href="@{/newword}" th:text="#{menu.newword}"></a></li>
 		        <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 		          <ul class="dropdown-menu">

@@ -59,6 +59,19 @@ public class Vocabulary {
 
 	@Column(name = "userid")
 	private int userid;
+	
+	@Column(name = "image")
+	private String image;
+	
+	
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 
 	public int getId() {
 		return id;

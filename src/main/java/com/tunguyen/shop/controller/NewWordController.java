@@ -1,11 +1,15 @@
 package com.tunguyen.shop.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Locale;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,6 +26,9 @@ import com.tunguyen.shop.service.VocabService;
 public class NewWordController {
 	
 	@Autowired
+	ServletContext context;
+	
+	@Autowired
 	VocabService vocabService;
 
 	@GetMapping("/newword")
@@ -33,12 +40,15 @@ public class NewWordController {
 	
 	@PostMapping("/newword")
 	public String addNewWord(@Valid @ModelAttribute("vocab") Vocabulary vocab, BindingResult result, Model model, Locale locale,
-			HttpSession session, @RequestParam("file") MultipartFile file) {
+			HttpSession session, @RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
 		System.out.println(file.getOriginalFilename());
 		if (result.hasErrors()) {
 			return "newword";
 		}
-		vocabService.saveVocab(vocab, session);
+		System.out.println(context.getRealPath(""));
+		file.transferTo(new File(context.getRealPath("") + "\\resources\\static\\image\\vocab\\" + file.getOriginalFilename()));
+		
+		vocabService.saveVocab(vocab, session, file.getOriginalFilename());
 		return "redirect:/newword";
 	}
 }

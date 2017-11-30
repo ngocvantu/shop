@@ -20,9 +20,10 @@ public class VocabServiceImpl implements VocabService{
 	VocabRepository vocabRepository;
 	
 	@Override
-	public void saveVocab(Vocabulary vocab, HttpSession session) { 
+	public void saveVocab(Vocabulary vocab, HttpSession session, String image) { 
 		vocab.setNgaynhap(new Date());
 		vocab.setDathuoc(false);
+		vocab.setImage(image);
 		vocab.setUserid(((User)session.getAttribute(LoginController.USER_)).getId());
 		vocabRepository.saveVocab(vocab);
 	}

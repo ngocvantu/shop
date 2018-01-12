@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.tunguyen.shop.domain.Vocabulary;
 import com.tunguyen.shop.repo.VocabRepository;
-import com.tunguyen.shop.service.VocabService;
 
 @Controller
 public class AnhVietController {
@@ -24,14 +23,15 @@ public class AnhVietController {
 		List<Vocabulary> listVocab = vocabRepo.get20Vocab();
 		for (Vocabulary vocabulary : listVocab) {
 			if (vocabulary.getVidu1().length() > 89) {
-				vocabulary.setVidu1(vocabulary.getVidu1().substring(0, 88));
+				vocabulary.setVidu1(vocabulary.getVidu1().substring(0, 85) + "...");
 			}
 			if (vocabulary.getVidu2().length() > 91) {
-				vocabulary.setVidu2(vocabulary.getVidu2().substring(0, 90));
+				vocabulary.setVidu2(vocabulary.getVidu2().substring(0, 87) + "...");
 			}
 		}
 		
 		model.addAttribute("listVocab", listVocab);
 		return "anhviet";
 	}
+
 }

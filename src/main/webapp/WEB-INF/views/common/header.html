@@ -7,10 +7,10 @@
 		<link rel="stylesheet" th:href="@{/resources/static/css/bootstrap.min.css}" /> 
 		<link rel="stylesheet" th:href="@{/resources/static/css/flat-form.css}" />  
 		<link rel="stylesheet" th:href="@{/resources/static/css/page-style.css}" />
-		<link rel="stylesheet" th:href="@{/resources/static/css/style.css}" />
 		<link rel="stylesheet" th:href="@{/resources/static/css/font-awesome.min.css}" />
 		<link rel="stylesheet" th:href="@{/resources/static/css/languages.min.css}" />  
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" th:href="@{/resources/static/css/style.css}" />
 </head>
 <body>
 		<nav th:fragment="navigation" class="navbar navbar-inverse ">
@@ -54,7 +54,7 @@
 						<div class="form-group">
 							<input type="text" class="form-control" th:placeholder="#{menu.search}">
 						</div>
-						<button type="submit" class="btn btn-default" th:text="#{menu.search}" >Tìm kiếm</button>
+						<button type="submit" class="btn btn-default btn-search" th:text="#{menu.search}" >Tìm kiếm</button>
 					</form>
 					<li><a th:href="@{/login}" th:if="${session.user == null}" th:text="#{menu.login}" > </a></li>
 					<li><img th:if="${session.user != null}" th:src="${session.user.image}" style="margin-top: 8px" height="34" width="34" class="img-rounded" /></li>

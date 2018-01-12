@@ -20,8 +20,10 @@
 					</p>
 					<p>
 						<a class="btn btn-primary" href="#" role="button">View details »</a>
+						<input th:if="${session.user != null}" class="delete" type="button" value="Delete" />
 					</p>
 					</div>
+					
 				</div>
 			</div>
 		</div><!-- end content -->

@@ -71,3 +71,12 @@
 .col-md-4:HOVER, .col-lg-4:HOVER { 
 	
 }
+
+.vocal input {
+	display: none;
+}
+
+.vocal:HOVER input {
+	display: inline;
+}
+ 

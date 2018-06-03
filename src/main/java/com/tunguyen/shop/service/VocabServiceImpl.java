@@ -26,6 +26,6 @@ public class VocabServiceImpl implements VocabService{
 		vocab.setImage(image);
 		vocab.setUserid(((User)session.getAttribute(LoginController.USER_)).getId());
 		vocabRepository.saveVocab(vocab);
-	}
+	}  
 
 }
